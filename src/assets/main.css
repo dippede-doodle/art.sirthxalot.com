@@ -26,4 +26,16 @@
         transition-transform ease-in-out delay-75 duration-500
         hover:border-black focus:border-black
     }
+    .section {
+        @apply flex flex-col gap-4 p-4 md:p-8 lg:px-0 lg:gap-0 lg:flex-row lg:py-16
+    }
+    .section--container {
+        @apply container mx-auto
+    }
+    .headline--1 {
+        @apply text-5xl font-black
+    }
+    .link {
+        @apply text-primary
+    }
 }
