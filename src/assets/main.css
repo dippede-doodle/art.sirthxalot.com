@@ -7,3 +7,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-moz-selection { /* Code for Firefox */
+    @apply text-primary-alt bg-primary
+}
+::selection {
+    @apply text-primary-alt bg-primary
+}
+
+* {
+    @apply focus-visible:ring-primary focus:ring-primary focus-visible:outline-primary focus:outline-primary
+}
+
+@layer components {
+    .button {
+        @apply inline-flex align-middle text-center items-center
+        border bg-white text-sm cursor-pointer px-4 py-2
+        transition-transform ease-in-out delay-75 duration-500
+        hover:border-black focus:border-black
+    }
+}

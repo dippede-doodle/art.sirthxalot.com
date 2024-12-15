@@ -9,9 +9,12 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
+        label: 'Homepage',
+        title: 'Welcome to dippede doodle\'s space of creativity',
+        description: 'Art gallery jam-packed with tons of inspiration for comic book aficionados.',
         og: {},
         x: {}
-      }
+      },
     },
   ],
 })
