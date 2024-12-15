@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, useRoute } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -8,16 +8,42 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      meta: {
+        og: {},
+        x: {}
+      }
     },
   ],
 })
+
+const TITLE_ELEMENT = document.title
+const AUTHOR_ELEMENT = document.querySelector('head meta[name="author"]')
+const DESCRIPTION_ELEMENT = document.querySelector('head meta[name="description"]')
+const KEYWORD_ELEMENT = document.querySelector('head meta[name="keywords"]')
+const OG_TITLE_ELEMENT = document.querySelector('head meta[property="og:title"]')
+const OG_IMAGE_ELEMENT = document.querySelector('head meta[property="og:image"]')
+const OG_DESCRIPTION_ELEMENT = document.querySelector('head meta[property="og:description"]')
+const OG_URL_ELEMENT = document.querySelector('head meta[property="og:url"]')
+const X_CARD_ELEMENT = document.querySelector('head meta[name="twitter:card"]')
+const X_TITLE_ELEMENT = document.querySelector('head meta[name="twitter:title"]')
+const X_DESCRIPTION_ELEMENT = document.querySelector('head meta[name="twitter:description"]')
+const X_IMAGE_ELEMENT = document.querySelector('head meta[name="twitter:image"]')
+const X_CREATOR_ELEMENT = document.querySelector('head meta[name="twitter:creator"]')
+
+router.beforeEach((to) => {
+  document.title = to.meta.title || TITLE_ELEMENT;
+  AUTHOR_ELEMENT.setAttribute('content',  to.meta.author || AUTHOR_ELEMENT.content)
+  DESCRIPTION_ELEMENT.setAttribute('content',  to.meta.description || DESCRIPTION_ELEMENT.content)
+  KEYWORD_ELEMENT.setAttribute('content',  to.meta.keywords || KEYWORD_ELEMENT.content)
+  OG_TITLE_ELEMENT.setAttribute('content',  to.meta.og.title || OG_TITLE_ELEMENT.content)
+  OG_IMAGE_ELEMENT.setAttribute('content',  to.meta.og.image || OG_IMAGE_ELEMENT.content)
+  OG_DESCRIPTION_ELEMENT.setAttribute('content',  to.meta.og.description || OG_DESCRIPTION_ELEMENT.content)
+  OG_URL_ELEMENT.setAttribute('content', document.location)
+  X_CARD_ELEMENT.setAttribute('content',  to.meta.x.card || X_CARD_ELEMENT.content)
+  X_TITLE_ELEMENT.setAttribute('content',  to.meta.x.title || OG_TITLE_ELEMENT.content)
+  X_DESCRIPTION_ELEMENT.setAttribute('content',  to.meta.x.description || OG_DESCRIPTION_ELEMENT.content)
+  X_IMAGE_ELEMENT.setAttribute('content',  to.meta.x.image || OG_IMAGE_ELEMENT.content)
+  X_CREATOR_ELEMENT.setAttribute('content',  to.meta.x.creator || X_CREATOR_ELEMENT.content)
+});
 
 export default router

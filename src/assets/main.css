@@ -1,7 +1,8 @@
 /** IMPORT WEBFONTS */
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-@import "./fonts/fontawesome/css/fontawesome.min.css";
-@import "./fonts/fontawesome/css/brands.min.css";
+@import "./fontawesome/css/fontawesome.min.css";
+@import "./fontawesome/css/brands.min.css";
+@import "./fontawesome/css/light.min.css";
 
 @tailwind base;
 @tailwind components;

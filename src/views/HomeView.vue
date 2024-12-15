@@ -1,9 +1,10 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    HELLO
+    <i class="fab fa-twitter"></i>
+    <i class="fal fa-window-maximize"></i>
   </main>
 </template>
