@@ -5,10 +5,9 @@ import {ref} from "vue";
 import SocialMenu from "@/components/menus/SocialMenu.vue";
 
 const siteTitle = 'dippede doodle';
-const route = useRoute();
 
 function isHomepage() {
-  return route.name === 'home';
+  return useRoute().name === 'home';
 }
 </script>
 
@@ -22,17 +21,21 @@ function isHomepage() {
       </div>
       <div class="ml-8 mr-auto">
         <h1 class="site-name">
-          <a href="/"
-             class="select-none"
-             title="Back to homepage"
-             v-if="isHomepage()"
-             v-html="siteTitle"
-          />
-          <span
-            class="cursor-default select-none"
-            v-if="! isHomepage()"
-            v-html="siteTitle"
-          />
+          <template v-if="! isHomepage()">
+            <a href="/"
+               class="select-none"
+               title="Back to homepage"
+               v-html="siteTitle"
+            />
+          </template>
+
+          <template v-if="isHomepage()">
+                <span
+                  class="cursor-default select-none"
+
+                  v-html="siteTitle"
+                />
+          </template>
         </h1>
       </div>
       <nav aria-label="social menu" class="social hidden md:block mr-8 text-3xl">

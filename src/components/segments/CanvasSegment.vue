@@ -2,7 +2,7 @@
 import { ref} from "vue";
 import {useRoute} from "vue-router";
 import SocialMenu from "@/components/menus/SocialMenu.vue";
-
+import _ from 'lodash'
 export default {
   components: {SocialMenu},
   data: function () {
@@ -21,6 +21,20 @@ export default {
     },
     isRouteActive (routeName) {
       return useRoute().name === routeName;
+    },
+    getNavRoutes()
+    {
+      let routes = this.$router.options.routes;
+
+      return _.filter(routes, function(o) {
+        let show = false;
+
+        if (! o.meta.nav || true === o.meta.nav.show) {
+          show = true;
+        }
+
+        return show;
+      });
     }
   }
 }
@@ -42,16 +56,18 @@ export default {
       </button>
 
       <div class="p-4 flex flex-col gap-4">
-        <nav aria-label="main menu">
-          <ul>
-            <template v-for="menu in this.$router.options.routes">
-
+        <nav aria-label="main menu" class="menu--main">
+          <ul class="flex flex-col gap-2">
+            <template v-for="menu in getNavRoutes()">
               <li>
                 <a :href="menu.path"
                    v-html="menu.meta.label"
                    v-if="! isRouteActive(menu.name)"
                 />
-                <b v-html="menu.meta.label" class="text-primary cursor-not-allowed" />
+                <b v-html="menu.meta.label"
+                   class="text-primary cursor-not-allowed"
+                   v-if="isRouteActive(menu.name)"
+                />
               </li>
             </template>
           </ul>
@@ -62,11 +78,6 @@ export default {
         <div class="page-info text-sm flex gap-3 flex-col">
           <b v-html="this.$route.meta.title" />
           <p v-html="this.$route.meta.description" />
-
-          <p class="inline-flex gap-2 items-center">
-            <i class="fal fa-stopwatch"></i>
-            <time-to-read element="canvas-content" />
-          </p>
         </div>
 
         <hr class="md:hidden">
@@ -78,7 +89,9 @@ export default {
     </div>
 
     <div class="canvas__content" ref="canvas-content">
-      <slot />
+      <main id="content">
+        <slot />
+      </main>
     </div>
   </div>
 </template>
@@ -100,5 +113,12 @@ export default {
 }
 .canvas__content {
   min-height: calc(100vh - 150px);
+}
+.menu--main ul li a {
+  @apply inline-flex w-full h-full;
+}
+.menu--main ul li:hover a,
+.menu--main ul li:focus a {
+  @apply font-bold text-xl
 }
 </style>

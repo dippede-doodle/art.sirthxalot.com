@@ -1,22 +1,9 @@
 import { createRouter, createWebHistory, useRoute } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import routeSettings from './routes.js'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-      meta: {
-        label: 'Homepage',
-        title: 'Welcome to dippede doodle\'s space of creativity',
-        description: 'Art gallery jam-packed with tons of inspiration for comic book aficionados.',
-        og: {},
-        x: {}
-      },
-    },
-  ],
+  routes: routeSettings,
 })
 
 const TITLE_ELEMENT = document.title
