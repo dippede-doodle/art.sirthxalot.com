@@ -5,7 +5,7 @@
         <div class="flex lg:w-[33%]">
           <h3 class="headline--1 uppercase">Source of inspiration</h3>
         </div>
-        <div class="flex lg:w-[66%] self-center text-2xl font-light">
+        <div class="text--highlight flex lg:w-[66%] self-center">
           <p>
             Hi folks! My name is
             <router-link to="/about" class="link">Alexander Bösch</router-link>
@@ -20,7 +20,7 @@
       </section>
 
       <section class="section section--container">
-        <div class="flex lg:w-[66%] self-center text-2xl font-light">
+        <div class="flex lg:w-[66%] self-center text--highlight">
           <p>
             Checkout
             <router-link to="/portfolio" class="link">my portfolio</router-link>
@@ -33,10 +33,19 @@
             <router-link to="/photos" class="link">my photo gallery</router-link>.
           </p>
         </div>
-        <div class="flex lg:w-[33%] text-right">
+        <div class="flex lg:w-[33%] lg:text-right order-first lg:order-2">
           <h3 class="headline--1 uppercase">Fair representation of my skills</h3>
         </div>
       </section>
+      <a href="https://paypal.me/AlexanderB734" target="_blank" class="link">
+        <section class="img--cover flex items-center" role="banner" style="background-image: url('/img/donation-hero.jpg')">
+          <div class="container p-8 mx-auto text-3xl lg:text-6xl text-white font-black uppercase">
+            A <span class="text-primary">quick donation</span> means the world to me!
+          </div>
+        </section>
+      </a>
+
+
     </div>
   </page-layout>
 </template>

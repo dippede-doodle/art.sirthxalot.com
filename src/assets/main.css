@@ -21,9 +21,9 @@
 
 @layer components {
     .button {
-        @apply inline-flex align-middle text-center items-center
-        border bg-white text-sm cursor-pointer px-4 py-2
-        transition-transform ease-in-out delay-75 duration-500
+        @apply inline-flex align-middle justify-center text-center
+        items-center border bg-white text-sm cursor-pointer px-4
+        py-2 transition-transform ease-in-out delay-75 duration-500
         hover:border-black focus:border-black
     }
     .section {
@@ -33,9 +33,20 @@
         @apply container mx-auto
     }
     .headline--1 {
-        @apply text-5xl font-black
+        @apply text-3xl lg:text-5xl font-black
+    }
+    .text--highlight {
+        @apply text-xl lg:text-2xl font-light
     }
     .link {
         @apply text-primary
+    }
+    .img--cover {
+        background: url('#') no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        min-height: 250px;
     }
 }
